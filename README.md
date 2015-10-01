@@ -1,1 +1,1 @@
-#Grails Training Labs
+#Groovy & Grails Training Labs

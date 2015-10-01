@@ -1,7 +1,7 @@
 apply plugin: "groovy"
 
 version = "1.0"
-description = "Spock Framework - Example Project"
+description = "Object Partners - Groovy & Grails Training - Groovy Workshops"
 
 // Spock works with Java 1.5 and above
 sourceCompatibility = 1.5
@@ -30,6 +30,14 @@ task workshop1(type: Test, dependsOn: testClasses) {
 
 task workshop2(type: Test, dependsOn: testClasses) {
   include '**/Workshop2*'
+}
+
+task workshop3(type: Test, dependsOn: testClasses) {
+  include '**/Workshop3*'
+}
+
+task workshop4(type: Test, dependsOn: testClasses) {
+  include '**/Workshop4*'
 }
 
 tasks.withType(Test) {
