@@ -5,30 +5,42 @@ import spock.lang.*
 class Workshop1Spec extends Specification {
 
   /*
-  *   Complete the sayHi closure to say 'Hello' to the name being passed in.
-  *
-  *   For Example:
-  *   sayHi('Nick') would return 'Hello Nick!'
+  *   Using String concatenation, assign the concatString variable
+  *   to 'Hello Sterling Archer!'
   */
   def "1.1 - string concatenation"() {
     given:
-      def sayHi = {name ->
-        "Hello $name!"
-      }
-    expect:
-      result == sayHi(name)
+      def firstName = 'Sterling'
+      def lastName = 'Archer'
 
-    where:
-      result            | name
-      'Hello Class!'    | 'Class'
-      'Hello Students!' | 'Students'
+    when:
+      def concatString = 'Hello ' + firstName  + ' ' + lastName + '!'
+
+    then:
+      concatString == 'Hello Sterling Archer!'
+  }
+
+  /*
+  *   Using GString concatenation, assign the gString variable
+  *   to 'Hello Sterling Archer!'
+  */
+  def "1.2 - gString concatenation"() {
+    given:
+      def firstName = 'Sterling'
+      def lastName = 'Archer'
+
+    when:
+      def gString = "Hello $firstName $lastName!"
+
+    then:
+      gString == 'Hello Sterling Archer!'
   }
 
   /*
   *   In src/main/groovy/Person.groovy create a Person class.  The specifics of
   *   the class are detailed in the comments of that file.
   */
-  def "1.2 - create person class"() {
+  def "1.3 - create person class"() {
     when:
       def person = new Person()
 
@@ -45,7 +57,7 @@ class Workshop1Spec extends Specification {
   *   The returned String should have the user's firstName middleName (if present) and lastName.
   */
   @Unroll
-  def "1.3 - person sayName() - #result"() {
+  def "1.4 - person sayName() - #result"() {
     given:
       def person = new Person(firstName: firstName, lastName: lastName, middleName: middleName)
 
