@@ -12,8 +12,7 @@ class Workshop2Spec extends Specification {
       def theList = [1, 2, 3, 4, 5]
 
     when:
-      // TODO: how many entries are in theList?
-      def listSize
+      def listSize = theList.size()
 
     then:
       listSize == 5
@@ -27,8 +26,7 @@ class Workshop2Spec extends Specification {
       def theList = ['a', 'b', 'c', 'd', 'e']
 
     when:
-      // TODO: grab the 3rd entry in theList
-      def thirdEntry
+      def thirdEntry = theList[2]
 
     then:
       thirdEntry == 'c'
@@ -51,8 +49,7 @@ class Workshop2Spec extends Specification {
         new Person(firstName: 'Ray', lastName: 'Gillette')
       ]
     when:
-      // TODO: find the firstNames
-      def firstNames
+      def firstNames = peopleList.collect{it.firstName}
 
     then:
       firstNames.size() == 8
@@ -77,9 +74,7 @@ class Workshop2Spec extends Specification {
         new Person(firstName: 'Ray', lastName: 'Gillette')
       ]
     when:
-      // TODO: find the middleNames
-      // TODO: remove null entries
-      def middleNames
+      def middleNames = peopleList*.middleName - null
 
     then:
       middleNames.size() == 3
@@ -102,8 +97,7 @@ class Workshop2Spec extends Specification {
         new Person(firstName: 'Ray', lastName: 'Gillette')
       ]
     when:
-      // TODO: find the first Archer
-      def person
+      def person = peopleList.find{it.lastName == 'Archer'}
 
     then:
       person.firstName == 'Sterling'
@@ -127,8 +121,7 @@ class Workshop2Spec extends Specification {
         new Person(firstName: 'Ray', lastName: 'Gillette')
       ]
     when:
-      // TODO: find all the Archers
-      def archers
+      def archers = peopleList.findAll{it.lastName == 'Archer'}
 
     then:
       archers.size() == 2
@@ -155,8 +148,7 @@ class Workshop2Spec extends Specification {
         new Person(firstName: 'Ray', lastName: 'Gillette')
       ]
     when:
-      // TODO: find all the Persons whose lastName ends in 'er'
-      def people
+      def people = peopleList.findAll{it.lastName.endsWith('er')}
 
     then:
       people.size() == 3
@@ -178,11 +170,9 @@ class Workshop2Spec extends Specification {
         new Person(firstName: 'Ray', lastName: 'Gillette')
       ]
     when:
-      // TODO: build a list of the people's names (Person.sayName())
-      def names
+      def names = peopleList.collect{it.sayName()}
 
-      // TODO: sort the list in a new variable
-      def sortedNames
+      def sortedNames = names.sort(false)
 
     then:
       names.size() == 8
@@ -197,8 +187,8 @@ class Workshop2Spec extends Specification {
 
       sortedNames.size() == 8
       sortedNames == ['Algernop Krieger',
-      'Cyril Figgis',
       'Cheryl Tunt',
+      'Cyril Figgis',
       'Lana Anthony Kane',
       'Malory Duchess Archer',
       'Pam Poovey',
