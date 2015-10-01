@@ -2,6 +2,7 @@
 
 import spock.lang.*
 
+@IgnoreAll
 class Workshop1Spec extends Specification {
 
   /*
@@ -14,8 +15,7 @@ class Workshop1Spec extends Specification {
       def lastName = 'Archer'
 
     when:
-      // TODO: say hello!
-      def concatString
+      def concatString = 'Hello ' + firstName  + ' ' + lastName + '!'
 
     then:
       concatString == 'Hello Sterling Archer!'
@@ -31,8 +31,7 @@ class Workshop1Spec extends Specification {
       def lastName = 'Archer'
 
     when:
-      // TODO: say hello!
-      def gString
+      def gString = "Hello $firstName $lastName!"
 
     then:
       gString == 'Hello Sterling Archer!'
@@ -41,9 +40,6 @@ class Workshop1Spec extends Specification {
   /*
   *   In src/main/groovy/Person.groovy create a Person class.  The specifics of
   *   the class are detailed in the comments of that file.
-  *
-  *   Note:  You will not need to change this test case for it to pass.
-  *     Complete Person.groovy properly and it will pass.
   */
   def "1.3 - create person class"() {
     when:
@@ -56,12 +52,9 @@ class Workshop1Spec extends Specification {
   }
 
   /*
-  *   Add a method to the Person class called 'sayName()'
+  *   Add a method to the Person class called 'sayName'
   *   This method will take no parameters and will return a String.
   *   The returned String should have the user's firstName middleName (if present) and lastName.
-  *
-  *   Note:  You will not need to change this test case for it to pass.
-  *     Complete Person.groovy properly and it will pass.
   */
   @Unroll
   def "1.4 - person sayName() - #result"() {
