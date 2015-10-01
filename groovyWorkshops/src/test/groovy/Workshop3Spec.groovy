@@ -21,15 +21,15 @@ class Workshop3Spec extends Specification {
       ]
 
     when:
-      // TODO: use .get() to find Sterling's role.
-      def sterlingRole
+      // use .get() to find Sterling's role.
+      def sterlingRole = roleMap.get('Sterling')
 
-      // TODO: use .property notaion to get Algernop's role.
-      def algernopRole
+      // use .property notaion to get Algernop's role.
+      def algernopRole = roleMap.Algernop
 
-      // TODO: use index accessors to find Cheryl and Pam's roles
-      def cherylRole
-      def pamRole
+      // use index accessors to find Cheryl and Pam's roles
+      def cherylRole = roleMap['Cheryl']
+      def pamRole = roleMap['Pam']
 
     then:
       sterlingRole == 'Field Agent'
@@ -68,8 +68,12 @@ class Workshop3Spec extends Specification {
       ]
 
     when:
-      // TODO: build roleToPeople map
       def roleToPeople = [:]
+
+      roleMap.each{firstName, role ->
+          def person = peopleList.find{person -> person.firstName == firstName}
+          roleToPeople[role] = roleToPeople[role] ? roleToPeople[role] + person : [person]
+      }
 
     then:
       roleToPeople['Director'].size() == 1
