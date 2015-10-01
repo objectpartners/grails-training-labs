@@ -13,7 +13,7 @@ class Workshop1Spec extends Specification {
   def "1.1 - string concatenation"() {
     given:
       def sayHi = {name ->
-        // TODO: Say Hello!
+        "Hello $name!"
       }
     expect:
       result == sayHi(name)
