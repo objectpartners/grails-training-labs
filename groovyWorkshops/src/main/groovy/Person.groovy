@@ -3,14 +3,12 @@
 *      First Name (String)
 *      Last Name (String)
 *      Middle Name (String)
-*      Age (Integer)
 */
 
 class Person {
   String firstName
   String lastName
   String middleName
-  Integer age
 
   String sayName() {
     if (middleName) {

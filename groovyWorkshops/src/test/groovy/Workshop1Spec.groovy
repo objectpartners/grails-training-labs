@@ -48,7 +48,6 @@ class Workshop1Spec extends Specification {
       person.hasProperty('firstName')
       person.hasProperty('lastName')
       person.hasProperty('middleName')
-      person.hasProperty('age')
   }
 
   /*
