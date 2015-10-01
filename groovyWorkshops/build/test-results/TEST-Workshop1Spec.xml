@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Workshop1Spec" tests="7" skipped="0" failures="7" errors="0" timestamp="2015-10-01T05:13:59" hostname="ditty.local" time="0.163">
+  <properties/>
+  <testcase name="1.1 - string concatenation" classname="Workshop1Spec" time="0.146">
+    <failure message="Condition not satisfied:&#10;&#10;result == sayHi(name)&#10;|      |  |     |&#10;|      |  null  Class&#10;|      false&#10;Hello Class!&#10;" type="org.spockframework.runtime.SpockComparisonFailure">Condition not satisfied:
+
+result == sayHi(name)
+|      |  |     |
+|      |  null  Class
+|      false
+Hello Class!
+
+	at Workshop1Spec.1.1 - string concatenation(Workshop1Spec.groovy:26)
+</failure>
+    <failure message="Condition not satisfied:&#10;&#10;result == sayHi(name)&#10;|      |  |     |&#10;|      |  null  Students&#10;|      false&#10;Hello Students!&#10;" type="org.spockframework.runtime.SpockComparisonFailure">Condition not satisfied:
+
+result == sayHi(name)
+|      |  |     |
+|      |  null  Students
+|      false
+Hello Students!
+
+	at Workshop1Spec.1.1 - string concatenation(Workshop1Spec.groovy:26)
+</failure>
+  </testcase>
+  <testcase name="1.2 - create person class" classname="Workshop1Spec" time="0.012">
+    <failure message="Condition not satisfied:&#10;&#10;person.hasProperty('firstName')&#10;|      |&#10;|      null&#10;Person@3bf5da43&#10;" type="org.spockframework.runtime.ConditionNotSatisfiedError">Condition not satisfied:
+
+person.hasProperty('firstName')
+|      |
+|      null
+Person@3bf5da43
+
+	at Workshop1Spec.1.2 - create person class(Workshop1Spec.groovy:43)
+</failure>
+  </testcase>
+  <testcase name="1.3 - person sayName() - Sterling Malory Archer" classname="Workshop1Spec" time="0.001">
+    <failure message="groovy.lang.MissingPropertyException: No such property: firstName for class: Person" type="groovy.lang.MissingPropertyException">groovy.lang.MissingPropertyException: No such property: firstName for class: Person
+	at Workshop1Spec.1.3 - person sayName() - #result(Workshop1Spec.groovy:57)
+</failure>
+  </testcase>
+  <testcase name="1.3 - person sayName() - Lana Anthony Kane" classname="Workshop1Spec" time="0.0">
+    <failure message="groovy.lang.MissingPropertyException: No such property: firstName for class: Person" type="groovy.lang.MissingPropertyException">groovy.lang.MissingPropertyException: No such property: firstName for class: Person
+	at Workshop1Spec.1.3 - person sayName() - #result(Workshop1Spec.groovy:57)
+</failure>
+  </testcase>
+  <testcase name="1.3 - person sayName() - Malory Duchess Archer" classname="Workshop1Spec" time="0.0">
+    <failure message="groovy.lang.MissingPropertyException: No such property: firstName for class: Person" type="groovy.lang.MissingPropertyException">groovy.lang.MissingPropertyException: No such property: firstName for class: Person
+	at Workshop1Spec.1.3 - person sayName() - #result(Workshop1Spec.groovy:57)
+</failure>
+  </testcase>
+  <testcase name="1.3 - person sayName() - Cyril Figgis" classname="Workshop1Spec" time="0.0">
+    <failure message="groovy.lang.MissingPropertyException: No such property: firstName for class: Person" type="groovy.lang.MissingPropertyException">groovy.lang.MissingPropertyException: No such property: firstName for class: Person
+	at Workshop1Spec.1.3 - person sayName() - #result(Workshop1Spec.groovy:57)
+</failure>
+  </testcase>
+  <testcase name="1.3 - person sayName() - Pam Poovey" classname="Workshop1Spec" time="0.001">
+    <failure message="groovy.lang.MissingPropertyException: No such property: firstName for class: Person" type="groovy.lang.MissingPropertyException">groovy.lang.MissingPropertyException: No such property: firstName for class: Person
+	at Workshop1Spec.1.3 - person sayName() - #result(Workshop1Spec.groovy:57)
+</failure>
+  </testcase>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
