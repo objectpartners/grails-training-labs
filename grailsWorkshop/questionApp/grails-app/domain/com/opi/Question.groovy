@@ -32,7 +32,7 @@ class Question {
     static mapping = {
       table 'topics'
 
-      answers joinTable: [name  : 'topic_responses_audited',
+      answers joinTable: [name  : 'topic_responses',
                 key   : 'question_id',
                 column: 'answer_id'
       ]
