@@ -2,28 +2,32 @@ package com.opi
 
 class User {
 
-    String username
-    String firstName
-    String lastName
-    String email
+  String username
+  String firstName
+  String lastName
+  String email
 
-    Date dateCreated
-  	Date lastUpdated
+  Date dateCreated
+	Date lastUpdated
 
-    static constraints = {
-      username nullable: false, blank: false, maxSize: 30, unique: true
-      firstName nullable: false, blank: false, maxSize: 30,
-        validator: { val, obj ->
-          if ((val?.toLowerCase() == 'justin')
-            && (obj.lastName?.toLowerCase() == 'bieber')) {
-            return 'no.biebers.allowed'
-          }
+  static constraints = {
+    username nullable: false, blank: false, maxSize: 30, unique: true
+    firstName nullable: false, blank: false, maxSize: 30,
+      validator: { val, obj ->
+        if ((val?.toLowerCase() == 'justin')
+          && (obj.lastName?.toLowerCase() == 'bieber')) {
+          return 'no.biebers.allowed'
         }
-      lastName nullable: false, blank:false, maxSize: 30
-      email nullable: false, blank: false, email: true
-    }
+      }
+    lastName nullable: false, blank:false, maxSize: 30
+    email nullable: false, blank: false, email: true
+  }
 
-    String toString() {
-      "$firstName $lastName"
-    }
+  String toString() {
+    "$firstName $lastName"
+  }
+
+  static mapping = {
+    username index: 'username_idx'
+  }
 }

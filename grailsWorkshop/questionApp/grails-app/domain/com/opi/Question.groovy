@@ -10,6 +10,15 @@ class Question {
     Date dateCreated
     Date lastUpdated
 
+    static namedQueries = {
+      querySinceLastLogin { lastLogin ->
+        fetchMode "answers",
+          FetchMode.SELECT
+        eq("deleted", false)
+        gt("lastUpdated", lastLogin)
+      }
+    }
+
     static constraints = {
       title blank: false, maxSize: 200,
         validator: { val, obj ->
@@ -18,5 +27,14 @@ class Question {
           }
         }
       text nullable: false, blank: false, maxSize: 10000
+    }
+
+    static mapping = {
+      table 'topics'
+
+      answers joinTable: [name  : 'topic_responses_audited',
+                key   : 'question_id',
+                column: 'answer_id'
+      ]
     }
 }
