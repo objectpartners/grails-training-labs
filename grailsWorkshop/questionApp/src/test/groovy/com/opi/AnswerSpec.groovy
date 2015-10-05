@@ -6,8 +6,8 @@ import spock.lang.Specification
 /**
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
  */
-@TestFor(Question)
-class QuestionSpec extends Specification {
+@TestFor(Answer)
+class AnswerSpec extends Specification {
 
     def setup() {
     }
@@ -15,15 +15,17 @@ class QuestionSpec extends Specification {
     def cleanup() {
     }
 
-    void "Question should validate"() {
+    def "Answer should validate"() {
       when:
         def user = Mock(User)
+        def question = Mock(Question)
 
-        def q = new Question(title: 'What is def?',
-            text:'Please explain this thing called def.',
+        def a = new Answer(
+            question: question,
+            text:'Answer',
             user: user)
 
       then:
-        q.validate()
+        a.validate()
     }
 }

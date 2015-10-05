@@ -10,9 +10,9 @@ class QuestionControllerSpec extends Specification {
     def populateValidParams(params) {
         assert params != null
 
-        // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
-        assert false, "TODO: Provide a populateValidParams() implementation for this generated test suite"
+        params["user"] = Mock(User)
+        params["title"] = "Test Question"
+        params["text"] = "Creating my first controller test"
     }
 
     void "Test the index action returns the correct model"() {
@@ -98,7 +98,7 @@ class QuestionControllerSpec extends Specification {
             controller.update(null)
 
         then:"A 404 error is returned"
-            response.redirectedUrl == '/question/index'
+            response.redirectedUrl == '/showQuestions'
             flash.message != null
 
         when:"An invalid domain instance is passed to the update action"
@@ -130,7 +130,7 @@ class QuestionControllerSpec extends Specification {
             controller.delete(null)
 
         then:"A 404 is returned"
-            response.redirectedUrl == '/question/index'
+            response.redirectedUrl == '/showQuestions'
             flash.message != null
 
         when:"A domain instance is created"
@@ -146,7 +146,7 @@ class QuestionControllerSpec extends Specification {
 
         then:"The instance is deleted"
             Question.count() == 0
-            response.redirectedUrl == '/question/index'
+            response.redirectedUrl == '/showQuestions'
             flash.message != null
     }
 }
