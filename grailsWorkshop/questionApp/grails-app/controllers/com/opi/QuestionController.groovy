@@ -95,15 +95,6 @@ class QuestionController {
         }
     }
 
-    def hello() {
-      render "I am here"
-    }
-
-    def searchByUsername() {
-      def questionInstanceList = Question.findAllByUsername('nllarson')
-      respond questionInstanceList, model: [questionInstanceCount: Question.count()], view: 'index'
-    }
-
     protected void notFound() {
         request.withFormat {
             form multipartForm {
@@ -113,5 +104,4 @@ class QuestionController {
             '*'{ render status: NOT_FOUND }
         }
     }
-
 }
