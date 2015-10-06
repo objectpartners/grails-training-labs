@@ -8,7 +8,18 @@ appender('STDOUT', ConsoleAppender) {
     }
 }
 
-root(ERROR, ['STDOUT'])
+appender('FILE_LOG', FileAppender) {
+    file = "application.log"
+    append = true
+    encoder(PatternLayoutEncoder) {
+        pattern = "%level %logger - %msg%n"
+    }
+}
+
+root(ERROR, ['STDOUT','FILE_LOG'])
+logger('grails.app.controllers', DEBUG)
+logger('grails.app.conf', DEBUG)
+logger('grails.app.services', DEBUG)
 
 def targetDir = BuildSettings.TARGET_DIR
 if (Environment.isDevelopmentMode() && targetDir) {
