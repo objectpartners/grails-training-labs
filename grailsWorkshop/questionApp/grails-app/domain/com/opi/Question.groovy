@@ -2,22 +2,14 @@ package com.opi
 
 class Question {
 
-    static hasMany = [answers: Answer]
+    User user
     String text
     String title
-    User user
-
+    boolean deleted = false
     Date dateCreated
     Date lastUpdated
 
-    static namedQueries = {
-      querySinceLastLogin { lastLogin ->
-        fetchMode "answers",
-          FetchMode.SELECT
-        eq("deleted", false)
-        gt("lastUpdated", lastLogin)
-      }
-    }
+    static hasMany = [answers: Answer]
 
     static constraints = {
       title blank: false, maxSize: 200,
@@ -28,6 +20,16 @@ class Question {
         }
       text nullable: false, blank: false, maxSize: 10000
     }
+
+    static namedQueries = {
+      querySinceLastLogin { lastLogin ->
+        fetchMode "answers",
+          FetchMode.SELECT
+        eq("deleted", false)
+        gt("lastUpdated", lastLogin)
+      }
+    }
+
 
     static mapping = {
       table 'topics'

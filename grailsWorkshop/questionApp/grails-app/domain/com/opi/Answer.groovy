@@ -2,12 +2,13 @@ package com.opi
 
 class Answer {
 
-    static belongsTo = [question:Question]
     String text
-    User user
-
+    User author
+    boolean accepted = false
     Date dateCreated
     Date lastUpdated
+
+    static belongsTo = [question:Question]
 
     static constraints = {
       text nullable: false, blank: false, maxSize: 10000
