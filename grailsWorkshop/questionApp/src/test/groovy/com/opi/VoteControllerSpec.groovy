@@ -15,7 +15,26 @@ class VoteControllerSpec extends Specification {
     def cleanup() {
     }
 
-    void "test something"() {
+    void "voteUpQuestion is redirected to Question.show"() {
+      given:
+        controller.params.id = '42'
+
+      when:
+        controller.voteUpQuestion()
+
+      then:
+        response.redirectedUrl == '/question/show/42'
+    }
+
+    void "voteDownQuestion is redirected to Question.show"() {
+      given:
+        controller.params.id = '42'
+
+      when:
+        controller.voteDownQuestion()
+
+      then:
+        response.redirectedUrl == '/question/show/42'
     }
 
 }

@@ -23,7 +23,7 @@ class AnswerSpec extends Specification {
         def a = new Answer(
             question: question,
             text:'Answer',
-            user: user)
+            author: user)
 
       then:
         a.validate()

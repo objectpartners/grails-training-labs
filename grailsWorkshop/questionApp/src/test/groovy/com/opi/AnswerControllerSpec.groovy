@@ -10,7 +10,7 @@ class AnswerControllerSpec extends Specification {
     def populateValidParams(params) {
         assert params != null
 
-        params['user'] = Mock(User)
+        params['author'] = Mock(User)
         params['question'] = Mock(Question)
         params.text = 'The answer is always 42'
     }

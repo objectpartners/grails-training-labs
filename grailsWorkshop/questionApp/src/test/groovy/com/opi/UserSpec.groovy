@@ -2,6 +2,7 @@ package com.opi
 
 import grails.test.mixin.TestFor
 import spock.lang.Specification
+import spock.lang.Unroll
 
 /**
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
@@ -15,36 +16,34 @@ class UserSpec extends Specification {
     def cleanup() {
     }
 
-  	def "test User validation"() {
-      when:
-    		User u = new User(username: 'bobmarley',
-          firstName: 'Bob',
-    			lastName: 'Marley',
-          email: 'bob@example.com')
+    def "test User validation"() {
+  		when:
+  		User u = new User(username: username, firstName: firstName, lastName: lastName, email: email)
+  		u.validate()
 
   		then:
-        u.validate()
+  		u.hasErrors() == !valid
+
+  		where:
+  		username	| firstName		| lastName		| email					| valid
+  		"bobmarley"	| "Bob"			| "Marley"		| "bobmarley@opi.com"	| true
   	}
 
     // Tests the custom validator.
-    def "test custom validator for no users with the name Justin Bieber"() {
-      when:
-        User u = new User(username:'justin', firstName: 'Justin',
-            lastName: 'Bieber', email:'justin@example.com')
+    @Unroll
+  	void "User  #username, #firstName, #lastName passes custom validation #valid"() {
+  		when:
+  		User u = new User(username: username, firstName: firstName, lastName: lastName, email: email)
+  		u.validate()
 
-      then:
-        !u.validate()
+  		then:
+  		u.hasErrors() == !valid
 
-      when: "first name for Justin is case insensitive"
-        u.firstName = 'jUsTiN'
-
-      then:
-        !u.validate()
-
-      when: "set to valid last name to break up first / last combo"
-        u.lastName = 'TV'
-
-      then:
-        u.validate()
+  		where:
+  		username	| firstName		| lastName		| email					| valid
+  		"theBiebs"	| "Justin"		| "Bieber"		| "justin@example.com"	| false
+  		"theBiebs"	| "JUsTin"		| "Bieber"		| "justin@example.com"	| false
+  		"theBiebs"	| "JUsTin"		| "BIeBeR"		| "justin@example.com"	| false
+  		"theBiebs"	| "Ryan"		  | "Bieber"		| "justin@example.com"	| true
     }
 }
