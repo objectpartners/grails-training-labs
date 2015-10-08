@@ -8,6 +8,7 @@ class Answer {
     Date dateCreated
     Date lastUpdated
 
+    static hasMany = [votes: Vote]
     static belongsTo = [question:Question]
 
     static constraints = {
