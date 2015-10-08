@@ -14,4 +14,8 @@ class Answer {
     static constraints = {
       text nullable: false, blank: false, maxSize: 10000
     }
+
+    Integer getVoteCount() {
+      votes*.vote.sum()?:0
+    }
 }
