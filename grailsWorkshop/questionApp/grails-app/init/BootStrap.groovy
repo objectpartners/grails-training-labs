@@ -3,10 +3,20 @@ import com.opi.Question
 import com.opi.Answer
 import groovy.time.TimeDuration
 import groovy.time.TimeCategory
+import grails.converters.*
 
 class BootStrap {
 
     def init = { servletContext ->
+      JSON.registerObjectMarshaller(User) {
+        def map= [:]
+          map['username'] = it.username
+          map['firstName'] = it.firstName
+          map['lastName'] = it.lastName
+          map['email'] = it.email
+        return map
+      }
+
       User bob = new User(firstName: "Bob", lastName: "Marley", username: "bobmarley", email: "bob@objectpartners.com").save(failOnError: true)
   		User peter = new User(firstName: "Peter", lastName: "Tosh", username: "petertosh", email: "peter@objectpartners.com").save(failOnError: true)
 

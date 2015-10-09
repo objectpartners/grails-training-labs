@@ -1,5 +1,7 @@
 package com.opi
+import grails.rest.Resource
 
+@Resource
 class Answer {
 
     String text

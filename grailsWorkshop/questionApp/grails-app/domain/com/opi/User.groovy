@@ -1,5 +1,5 @@
 package com.opi
-import grails.rest.*
+import grails.rest.Resource
 
 @Resource(readOnly = true)
 class User {
