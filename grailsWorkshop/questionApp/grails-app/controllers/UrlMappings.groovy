@@ -9,5 +9,6 @@ class UrlMappings {
         "/"(controller: 'question', action: 'index')
         "500"(view:'/error')
         "404"(view:'/notFound')
+        "/users" (resources:"user")
     }
 }
