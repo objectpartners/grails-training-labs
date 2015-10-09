@@ -1,5 +1,6 @@
 package com.opi
 
+import grails.validation.ValidationException
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 

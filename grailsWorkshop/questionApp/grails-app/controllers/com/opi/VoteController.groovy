@@ -6,7 +6,7 @@ class VoteController {
     def voteUpQuestion(Long id){
       def question = Question.get(id)
       if (question) {
-        saveQuestionVote(question, Vote.VOTE_UP)
+        saveQuestionVote(question, Vote.UP_VOTE)
       } else {
         redirect controller: 'question', action: 'index'
       }
@@ -15,7 +15,7 @@ class VoteController {
     def voteDownQuestion(Long id){
       def question = Question.get(id)
       if (question) {
-        saveQuestionVote(question, Vote.VOTE_DOWN)
+        saveQuestionVote(question, Vote.DOWN_VOTE)
       } else {
         redirect controller: 'question', action: 'index'
       }
@@ -24,7 +24,7 @@ class VoteController {
     def voteUpAnswer(Long id){
       def answer = Answer.get(id)
       if (answer) {
-        saveAnswerVote(question, Vote.VOTE_DOWN)
+        saveAnswerVote(answer, Vote.UP_VOTE)
       } else {
         redirect controller: 'question', action: 'index'
       }
@@ -33,7 +33,7 @@ class VoteController {
     def voteDownAnswer(Long id){
       def answer = Answer.get(id)
       if (answer) {
-        saveAnswerVote(question, Vote.VOTE_DOWN)
+        saveAnswerVote(answer, Vote.DOWN_VOTE)
       } else {
         redirect controller: 'question', action: 'index'
       }

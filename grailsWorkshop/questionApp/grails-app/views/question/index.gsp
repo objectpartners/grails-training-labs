@@ -1,28 +1,22 @@
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
-    <head>
-        <meta name="layout" content="main" />
-        <g:set var="entityName" value="${message(code: 'question.label', default: 'Question')}" />
-        <title><g:message code="default.list.label" args="[entityName]" /></title>
-    </head>
-    <body>
-        <a href="#list-question" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-        <div class="nav" role="navigation">
-            <ul>
-                <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-                <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-            </ul>
-        </div>
-        <div id="list-question" class="content scaffold-list" role="main">
-            <h1><g:message code="default.list.label" args="[entityName]" /></h1>
-            <g:if test="${flash.message}">
-                <div class="message" role="status">${flash.message}</div>
-            </g:if>
-            <f:table collection="${questionList}" />
+<head>
+	<meta content="main" name="layout" />
+	<title>Most Recent Questions</title>
+</head>
 
-            <div class="pagination">
-                <g:paginate total="${questionCount ?: 0}" />
-            </div>
-        </div>
-    </body>
+<body>
+	<div class="page-header">
+		<h2>Recent questions</h2>
+	</div>
+
+	<div class="fourteen columns offset-by-one">
+		<div class="well well-lg">
+			<g:each in="${questionList}" var="question">
+				<h3><g:link controller="question" action="show" id="${question.id}">${question.title}</g:link></h3>
+			</g:each>
+
+		</div>
+	</div>
+</body>
 </html>

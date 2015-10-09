@@ -10,11 +10,15 @@ class QuestionController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
+        params.sort = 'dateCreated'
+        params.order = 'desc'
         respond Question.list(params), model:[questionCount: Question.count()]
     }
 
     def show(Question question) {
-        respond question
+        def answers = question?.answers?.sort { a,b -> b.voteCount <=> a.voteCount }
+
+        respond question, model: [answers: answers]
     }
 
     def create() {

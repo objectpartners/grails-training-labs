@@ -6,7 +6,6 @@ class UrlMappings {
                 // apply constraints here
             }
         }
-        "/showQuestions" (controller: 'question', action: 'index')
         "/"(view:"/index")
         "500"(view:'/error')
         "404"(view:'/notFound')
