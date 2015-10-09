@@ -1,7 +1,7 @@
 package com.opi
 import grails.rest.*
 
-@Resource(uri='/user', readOnly=true)
+@Resource(readOnly = true)
 class User {
 
   String username
