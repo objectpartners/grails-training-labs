@@ -3,30 +3,41 @@ package com.opi
 import grails.validation.ValidationException
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
+import grails.validation.Validateable
 
 @Transactional(readOnly = true)
 class AnswerController {
 
-  def answer() {
-		Question question = params.id ? Question.get(params.id) : null
-		User user = User.get(1)
-		if (!question) {
-			flash.message = "Question Not Found"
-			redirect(controller: 'question', action: 'list')
-		} else if (!user) {
-			flash.message = "You must be logged in to submit an answer"
-			redirect(controller: 'question', action: 'list')
-		} else {
-			println "params: $params"
-			def answer = new Answer(text: params.answer, author: user)
-			question.addToAnswers(answer)
-			try {
-				answer.save(failOnError: true)
-				question.save(failOnError: true)
-			} catch (ValidationException ex) {
-				flash.error = "There was an issue adding your answer. Please try again"
-			}
-			redirect controller: "question", action: "show", id: question.id
-		}
-	}
+  def answer(AnswerCommand cmd) {
+     if (cmd.validate()) {
+       def question = cmd.id
+       User user = User.get(1)
+
+       def answer = new Answer(text: params.answer, author: user)
+       question.addToAnswers(answer)
+       try {
+         answer.save(failOnError: true)
+         question.save(failOnError: true)
+       } catch (ValidationException ex) {
+         flash.message = "There was an issue adding your answer. Please try again"
+       }
+       redirect controller: "question", action: "show", id: question.id
+     } else {
+       if (params.id) {
+         redirect(controller: 'question', action: 'show', id: params.id)
+       } else {
+         redirect(controller: 'question', action: 'list')
+       }
+     }
+   }
+}
+
+class AnswerCommand implements Validateable{
+  Question id
+  String answer
+
+  static constraints = {
+    id nullable: false, blank: false
+    answer nullable: false, blank: false
+  }
 }
