@@ -99,7 +99,7 @@ class QuestionControllerSpec extends Specification {
             controller.update(null)
 
         then:"A 404 error is returned"
-            response.redirectedUrl == '/showQuestions'
+            response.redirectedUrl == '/question/index'
             flash.message != null
 
         when:"An invalid domain instance is passed to the update action"
@@ -131,7 +131,7 @@ class QuestionControllerSpec extends Specification {
             controller.delete(null)
 
         then:"A 404 is returned"
-            response.redirectedUrl == '/showQuestions'
+            response.redirectedUrl == '/question/index'
             flash.message != null
 
         when:"A domain instance is created"
@@ -147,7 +147,7 @@ class QuestionControllerSpec extends Specification {
 
         then:"The instance is deleted"
             Question.count() == 0
-            response.redirectedUrl == '/showQuestions'
+            response.redirectedUrl == '/question/index'
             flash.message != null
     }
 }
