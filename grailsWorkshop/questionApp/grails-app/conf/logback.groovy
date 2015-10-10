@@ -16,6 +16,7 @@ appender('FILE_LOG', FileAppender) {
     }
 }
 
+logger('grails.plugin.springsecurity', INFO)
 root(ERROR, ['STDOUT','FILE_LOG'])
 logger('grails.app.controllers', DEBUG)
 logger('grails.app.conf', DEBUG)

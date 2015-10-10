@@ -25,6 +25,13 @@
 					<input type="text" class="form-control" placeholder="Search">
 				</div>
 			</form>
+
+			<sec:ifLoggedIn>
+				<ul class="nav navbar-nav navbar-right">
+					<li><g:link controller="logout">Logout <sec:username/> <i class="fa fa-sign-out"></i></g:link></li>
+				</ul>
+			</sec:ifLoggedIn>
+
 		</div><!-- /.navbar-collapse -->
 	</div><!-- /.container-fluid -->
 </nav>

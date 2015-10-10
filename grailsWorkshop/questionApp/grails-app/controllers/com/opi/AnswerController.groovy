@@ -4,14 +4,16 @@ import grails.validation.ValidationException
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import grails.validation.Validateable
+import grails.plugin.springsecurity.annotation.Secured
 
 @Transactional(readOnly = true)
+@Secured(['ROLE_USER'])
 class AnswerController {
 
   def answer(AnswerCommand cmd) {
      if (cmd.validate()) {
        def question = cmd.id
-       User user = User.get(1)
+       User user = User.findByUsername(getPrincipal().username)
 
        def answer = new Answer(text: params.answer, author: user)
        question.addToAnswers(answer)

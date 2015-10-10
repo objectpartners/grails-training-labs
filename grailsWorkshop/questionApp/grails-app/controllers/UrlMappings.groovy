@@ -11,7 +11,7 @@ class UrlMappings {
         "404"(view:'/notFound')
 
         // api endpoints
-        "/api/users" (resources:"user")
-        "/api/questions" (resources:"question")
+        // "/api/users" (resources:"user")
+        // "/api/questions" (resources:"question")
     }
 }
